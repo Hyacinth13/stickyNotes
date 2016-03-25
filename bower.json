@@ -1,0 +1,21 @@
+{
+  "name": "sticky_notes",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Hyacinth13 <jpeckwriter@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Hyacinth13/stickyNotes",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#^0.97.5"
+  }
+}
