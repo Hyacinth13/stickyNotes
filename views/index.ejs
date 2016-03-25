@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+   <% include ./partials/head %>
   </head>
   <body>
+  	<header>
+  		<% include ./partials/header %>
+  	</header>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <p>Welcome to your <%= title %>:</p>
+    <hr>
+    <div class="row">
+    	<div class="col s12 m4">
+    	  <button class="btn green darken-2" id="btnNew">New</button>
+    		<form id="newNote" method="POST" class="hide">
+    			<input type="text" name="title" placeholder="Title">
+    			<input type="text" name="content" placeholder="Note Body">
+    		</form>
+    	</div>
+    </div>
+
+    <script>
+    $("#btnNew").click(function(){ 
+    	 $("#newNote").removeClass("hide");
+    });
+    </script>
+
   </body>
 </html>
