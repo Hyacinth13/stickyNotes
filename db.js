@@ -7,4 +7,4 @@ var Note = new Schema({
 });
 
 mongoose.model("Note", Note);
-mongoose.connect("mongodb://localhost/notes");
+mongoose.connect("mongodb://localhost/");

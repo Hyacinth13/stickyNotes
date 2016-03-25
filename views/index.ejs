@@ -8,15 +8,16 @@
   	<header>
   		<% include ./partials/header %>
   	</header>
-    <h1><%= title %></h1>
-    <p>Welcome to your <%= title %>:</p>
+    <h1>StickyNotes</h1>
+    <p>Welcome to your StickyNotes:</p>
     <hr>
     <div class="row">
     	<div class="col s12 m4">
     	  <button class="btn green darken-2" id="btnNew">New</button>
-    		<form id="newNote" method="POST" class="hide">
+    		<form id="newNote"  action="/" method="POST" class="hide">
     			<input type="text" name="title" placeholder="Title">
     			<input type="text" name="content" placeholder="Note Body">
+    			<button class="btn green darken-2" id="btnSave" type="submit">Save</button>
     		</form>
     	</div>
     </div>

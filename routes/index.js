@@ -1,15 +1,26 @@
 var express = require('express');
+var mongoose = require('mongoose');
+var Note = mongoose.model('Note');
 var router = express.Router();
 
-//GET homepage
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Notes' });
-});
+
+
 //GET Notes 
 router.get('/', function(req, res, next) {
  Note.find( function ( err, notes, count ) {
    res.render('index', { notes : notes });
  });
+});
+//POST  a new note
+router.post('/', function(req, res, next){
+	new Note({
+		title:req.body.title,
+		content: req.body.content,
+		updated_at: Date.now()
+	}).save( function(err, note, count) {
+		console.log("Note Created");
+		res.redirect('/'); // ('/' to redirect to index page)
+	});
 });
 //GET a specific note
 router.get('/:id', function(req, res, next){
@@ -17,23 +28,13 @@ router.get('/:id', function(req, res, next){
 		res.render('note', {note: note});
 	});
 });
-//POST  a new note
-router.post('/', function(req, res, next){
-	new Note({
-		title:req.body.name,
-		description: req.body.description,
-		updated_at: Date.now()
-	}).save( function(err, note, count) {
-		res.redirect('/'); // ('/' to redirect to index page)
-	});
-});
 //EDIT notes
 router.post('/edit/:id', function(req, res, next) {
  Note.findById( req.params.id, function(err, note) {
-   note.title = req.body.name,
-   note.description = req.body.description,
+   note.title = req.body.title,
+   note.content = req.body.content,
    note.updated_at = Date.now();
-   .save( function(err, note, count) {
+   note.save( function(err, note, count) {
      res.redirect('/');
    });
  });
