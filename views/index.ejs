@@ -19,12 +19,60 @@
     			<input type="text" name="content" placeholder="Note Body">
     			<button class="btn green darken-2" id="btnSave" type="submit">Save</button>
     		</form>
+        <table class='table col m8 s12'>
+          <thead>
+            <th>Saved Sticky</th>
+          </thead>
+           <tbody>
+             <% notes.forEach( function(note) { %>
+             <% action = '/index/' + note.id %>
+              <tr>
+                 <td><a href= <%= action %>> <%=note.title %> </a></td>
+                 <td> <%= note.content %> </td>
+                 <td>
+                   <form id="newNote"  action="/" method="POST" class="hide">
+                   </form>
+                 </td>
+               </tr>
+           <% }); %>
+           </tbody>
+         </table>
     	</div>
     </div>
-
+    <!-- Delete a note table and button -->
+    <table class='table col m8 s12'>
+          <thead>
+            <th>Delete Sticky</th>
+          </thead>
+           <tbody>
+             <% notes.forEach( function(note) { %>
+             <% action = '/index/' + note.id %>
+              <tr>
+                 <td><a href= <%= action %>> <%=note.title %> </a></td>
+                 <td> <%= note.content %> </td>
+                 <td>
+                   <form action= <%= action %> method='DELETE'>
+                    <button class='btn green darken-2' id='deleteNote' action='/' method='DELETE'>Delete</button>
+                   </form>
+                 </td>
+               </tr>
+           <% }); %>
+           </tbody>
+         </table>
+         <!-- Update Button -->
+         <div class='row', 'col s12 m8'>
+           <form action=<%= action %> method='POST'>
+             <input type='text' name='title'  />
+             <input type='text' name='content'  />
+             <button class='btn green darken-2'>Update</button>
+           </form>
+           </div>
     <script>
     $("#btnNew").click(function(){ 
     	 $("#newNote").removeClass("hide");
+    });
+    $('#deleteNote').click(function(){
+       $('#deleteNote').removeClass('hide');
     });
     </script>
 
