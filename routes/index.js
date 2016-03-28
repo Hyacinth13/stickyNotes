@@ -11,6 +11,7 @@ router.get('/', function(req, res, next) {
    res.render('index', { notes : notes });
  });
 });
+
 //POST  a new note
 router.post('/', function(req, res, next){
 	new Note({
@@ -18,16 +19,17 @@ router.post('/', function(req, res, next){
 		content: req.body.content,
 		updated_at: Date.now()
 	}).save( function(err, note, count) {
-		console.log("Note Created");
 		res.redirect('/'); // ('/' to redirect to index page)
 	});
 });
+
 //GET a specific note
 router.get('/:id', function(req, res, next){
 	Note.findById(req.params.id, function(err, note) {
-		res.render('note', {note: note});
+		res.render('index', {note: note});
 	});
 });
+
 //EDIT notes
 router.post('/edit/:id', function(req, res, next) {
  Note.findById( req.params.id, function(err, note) {
@@ -39,6 +41,7 @@ router.post('/edit/:id', function(req, res, next) {
    });
  });
 });
+
 //DELETE a note
 router.post('/:id', function(req, res, next) {
  Note.findById(req.params.id, function(err, note) {
