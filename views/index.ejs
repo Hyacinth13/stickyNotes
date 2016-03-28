@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-   <% include ./partials/head %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <% include ./partials/head %>
   </head>
   <body>
   	<header>
   		<% include ./partials/header %>
   	</header>
-    <h1>StickyNotes</h1>
+    <h1 class='center-align'>StickyNotes</h1>
     <p>Welcome to your StickyNotes:</p>
     <hr>
     <div class="row">
     	<div class="col s12 m4">
     	  <button class="btn green darken-2" id="btnNew">New</button>
-    	  <br>
-    	  <br>
+    	  <br />
+    	  <br />
     		<form id="newNote"  action="/" method="POST" class="hide">
     			<input type="text" name="title" placeholder="Title">
     			<input type="text" name="content" placeholder="Note Body">
@@ -25,36 +25,29 @@
           <thead>
             <th>Saved Sticky</th>
           </thead>
-           <tbody>
-             <% notes.forEach( function(note) { %>
-             <% action = '/' + note.id %>
+          <tbody>
+            <% notes.forEach( function(note) { %>
+              <% action = '/' + note.id %>
               <tr>
-                 <td>
-                 	<a href= <%= action %>> <%=note.title %> </a>
-                 </td>
-                 <td> 
+                <td>
+                  <a href= <%= action %> > <%=note.title %> </a>
+                </td>
+                <td> 
                  	<%= note.content %> 
-                 </td>
-                 <td>
-                   <form action=<%= action%> method="POST" >
-                   	<button class="btn green darken-2" type="submit">Delete</button>
-                   </form>
-                 </td>
-               </tr>
-           <% }); %>
-           </tbody>
-         </table>
+                </td>
+                <td>
+                  <form action=<%= action %> method="POST" >
+                    <button class="btn green darken-2" type="submit">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
     	</div>
     </div>
     
-         <!-- Update Button -->
-         <div class='row', 'col s12 m8'>
-           <form action=<%= action %> method='POST'>
-             <input type='text' name='title'  />
-             <input type='text' name='content'  />
-             <button class='btn green darken-2'>Update</button>
-           </form>
-           </div>
+
     <script>
     $("#btnNew").click(function(){ 
     	 $("#newNote").removeClass("hide");
