@@ -26,11 +26,12 @@
             <th>Saved Sticky</th>
           </thead>
           <tbody>
-            <% note.forEach( function(note) { %>
+            <% notes.forEach( function(note) { %>
               <% action = '/' + note.id %>
+              <% specific = '/note/' + note.id %>
               <tr>
                 <td>
-                  <a href= <%= action %> > <%=note.title %> </a>
+                  <a href= <%= specific %> > <%=note.title %> </a>
                 </td>
                 <td> 
                  	<%= note.content %> 
